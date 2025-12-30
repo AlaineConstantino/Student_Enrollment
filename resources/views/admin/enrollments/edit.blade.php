@@ -380,7 +380,7 @@
                                     <input type="date" name="enrollment_date" class="form-control" value="{{ old('enrollment_date', now()->format('Y-m-d')) }}">
                                 </div>
                                 
-                                <button type="submit" name="status" value="approved" class="btn btn-success w-100">
+                                <button type="submit" name="status" value="enrolled" class="btn btn-success w-100">
                                     <i class="bi bi-check-circle"></i>
                                     Approve & Assign to Class
                                 </button>
@@ -404,7 +404,7 @@
                                     @enderror
                                 </div>
                                 
-                                <button type="submit" name="status" value="rejected" class="btn btn-danger w-100">
+                                <button type="submit" name="status" value="withdrawn" class="btn btn-danger w-100">
                                     <i class="bi bi-x-circle"></i>
                                     Decline Enrollment
                                 </button>
@@ -423,14 +423,14 @@
             btn.addEventListener('click', function(e) {
                 const status = this.getAttribute('value');
                 
-                if (status === 'approved') {
+                if (status === 'enrolled') {
                     const classSelect = document.getElementById('classSelect');
                     if (!classSelect.value) {
                         e.preventDefault();
                         alert('Please select a class to approve this enrollment.');
                         return false;
                     }
-                } else if (status === 'rejected') {
+                } else if (status === 'withdrawn') {
                     const declineReason = document.getElementById('declineReason');
                     if (!declineReason.value.trim()) {
                         e.preventDefault();

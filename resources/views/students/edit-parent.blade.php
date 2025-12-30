@@ -489,7 +489,7 @@
                         <div style="margin-top: 2rem; padding: 1rem; background: #fee2e2; border: 1px solid #fecaca; border-radius: 0.5rem;">
                             <p style="color: #991b1b; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
                                 <i class="bi bi-exclamation-triangle-fill"></i>
-                                This child has an approved enrollment and cannot be removed.
+                                This child has an enrolled enrollment and cannot be removed.
                             </p>
                         </div>
                     @endif

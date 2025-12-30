@@ -17,8 +17,8 @@
         .table thead { background: linear-gradient(135deg, var(--phthalo-green) 0%, var(--space-sparkle) 100%); color: white; }
         .table tbody tr:hover { background-color: #f9f9f9; }
         .badge-pending { background-color: #ffc107; color: #000; }
-        .badge-approved { background-color: #198754; }
-        .badge-rejected { background-color: #dc3545; }
+        .badge-enrolled { background-color: #198754; }
+        .badge-withdrawn { background-color: #dc3545; }
         .btn-sm { padding: 0.375rem 0.75rem; font-size: 0.85rem; }
         .empty-state { text-align: center; padding: 3rem; color: #6b7280; }
     </style>
@@ -74,10 +74,10 @@
                                     <td>
                                         @if($enrollment->status === 'pending')
                                             <span class="badge badge-pending">Pending</span>
-                                        @elseif($enrollment->status === 'approved')
-                                            <span class="badge badge-approved">Approved</span>
+                                        @elseif($enrollment->status === 'enrolled')
+                                            <span class="badge badge-enrolled">Enrolled</span>
                                         @else
-                                            <span class="badge badge-rejected">Rejected</span>
+                                            <span class="badge badge-withdrawn">Withdrawn</span>
                                         @endif
                                     </td>
                                     <td>{{ $enrollment->created_at->format('M d, Y') }}</td>
@@ -118,10 +118,10 @@
                                     <td>
                                         @if($enrollment->status === 'pending')
                                             <span class="badge badge-pending">Pending</span>
-                                        @elseif($enrollment->status === 'approved')
-                                            <span class="badge badge-approved">Approved</span>
+                                        @elseif($enrollment->status === 'enrolled')
+                                            <span class="badge badge-enrolled">Enrolled</span>
                                         @else
-                                            <span class="badge badge-rejected">Rejected</span>
+                                            <span class="badge badge-withdrawn">Withdrawn</span>
                                         @endif
                                     </td>
                                     <td>{{ $enrollment->deleted_at->format('M d, Y') }}</td>

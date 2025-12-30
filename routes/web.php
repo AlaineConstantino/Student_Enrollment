@@ -5,6 +5,8 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\GradeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +35,8 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::patch('enrollments/{id}/status', [EnrollmentController::class, 'updateStatus']);
     Route::resource('classes', ClassController::class);
     Route::resource('teachers', TeacherController::class);
+    Route::resource('grades', GradeController::class);
+    Route::resource('payments', PaymentController::class);
     Route::resource('users', \App\Http\Controllers\UserController::class);
     Route::post('users/{id}/restore', [\App\Http\Controllers\UserController::class, 'restore'])->name('users.restore');
     Route::post('students/{student}/restore', [StudentController::class, 'restore'])->name('students.restore');

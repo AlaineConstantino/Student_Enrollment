@@ -200,6 +200,40 @@
                 </a>
             </div>
 
+            <!-- Grades Management -->
+            <div class="management-card" style="background: linear-gradient(135deg, rgba(125, 189, 209, 0.08) 0%, rgba(255, 255, 255, 1) 50%);">
+                <div class="management-header">
+                    <div class="management-icon icon-wrapper" style="background: linear-gradient(135deg, rgba(125, 189, 209, 0.2) 0%, rgba(125, 189, 209, 0.1) 100%);">
+                        <i class="bi bi-star-fill" style="color: var(--moonstone-blue); font-size: 1.875rem;"></i>
+                    </div>
+                    <div>
+                        <h3 class="management-title">Grades Management</h3>
+                        <p class="management-desc">Manage grade levels, section assignments, subject associations, and fee structures for different classes.</p>
+                    </div>
+                </div>
+                <a href="{{ route('grades.index') }}" class="btn-primary">
+                    View All Grades
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Payments Management -->
+            <div class="management-card" style="background: linear-gradient(135deg, rgba(74, 130, 132, 0.08) 0%, rgba(255, 255, 255, 1) 50%);">
+                <div class="management-header">
+                    <div class="management-icon icon-wrapper" style="background: linear-gradient(135deg, rgba(74, 130, 132, 0.2) 0%, rgba(74, 130, 132, 0.1) 100%);">
+                        <i class="bi bi-cash-coin" style="color: var(--space-sparkle); font-size: 1.875rem;"></i>
+                    </div>
+                    <div>
+                        <h3 class="management-title">Payments Management</h3>
+                        <p class="management-desc">Track and manage student payments, fee collections, payment history, and financial records.</p>
+                    </div>
+                </div>
+                <a href="{{ route('payments.index') }}" class="btn-primary">
+                    View All Payments
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+
             <!-- Users Management -->
             <div class="management-card" style="background: linear-gradient(135deg, rgba(122, 156, 58, 0.08) 0%, rgba(255, 255, 255, 1) 50%);">
                 <div class="management-header">

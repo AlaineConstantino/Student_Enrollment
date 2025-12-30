@@ -118,32 +118,32 @@ class EnrollmentController extends Controller
     public function update(Request $request, Enrollment $enrollment)
     {
         $status = $request->input('status');
-        
-        if ($status === 'approved') {
+
+        if ($status === 'enrolled') {
             // Approval requires class selection
             $validated = $request->validate([
-                'status' => 'required|in:approved',
+                'status' => 'required|in:enrolled',
                 'class_id' => 'required|exists:classes,class_id',
                 'enrollment_date' => 'nullable|date',
             ]);
-            
+
             $enrollment->update([
-                'status' => 'approved',
+                'status' => 'enrolled',
                 'class_id' => $validated['class_id'],
                 'enrollment_date' => $validated['enrollment_date'] ?? now(),
                 'decline_reason' => null, // Clear any previous decline reason
             ]);
-            
+
             return redirect()->route('enrollments.index')->with('success', 'Enrollment approved successfully and student assigned to class.');
-        } else if ($status === 'rejected') {
+        } else if ($status === 'withdrawn') {
             // Decline requires reason
             $validated = $request->validate([
-                'status' => 'required|in:rejected',
+                'status' => 'required|in:withdrawn',
                 'decline_reason' => 'required|string|min:10|max:500',
             ]);
-            
+
             $enrollment->update($validated);
-            
+
             return redirect()->route('enrollments.index')->with('success', 'Enrollment declined. Reason has been sent to parent.');
         } else {
             return redirect()->route('enrollments.index')->with('error', 'Invalid action.');

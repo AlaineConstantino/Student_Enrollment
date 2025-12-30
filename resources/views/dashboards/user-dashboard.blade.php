@@ -444,7 +444,7 @@
             color: #92400e;
         }
 
-        .badge-approved {
+        .badge-enrolled {
             background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
             color: #065f46;
         }
@@ -1005,8 +1005,8 @@
                                                     <div>
                                                         @if($enrollment->status === 'pending')
                                                             <span class="enrollment-badge badge-pending">Pending</span>
-                                                        @elseif($enrollment->status === 'approved')
-                                                            <span class="enrollment-badge badge-approved">Approved</span>
+                                                        @elseif($enrollment->status === 'enrolled')
+                                                            <span class="enrollment-badge badge-enrolled">Enrolled</span>
                                                         @else
                                                             <span class="enrollment-badge badge-rejected">Declined</span>
                                                         @endif
@@ -1129,8 +1129,8 @@
                                     <td>
                                         @if($enrollment->status === 'pending')
                                             <span class="enrollment-badge badge-pending">Pending</span>
-                                        @elseif($enrollment->status === 'approved')
-                                            <span class="enrollment-badge badge-approved">Approved</span>
+                                        @elseif($enrollment->status === 'enrolled')
+                                            <span class="enrollment-badge badge-enrolled">Enrolled</span>
                                         @else
                                             <span class="enrollment-badge badge-rejected">Declined</span>
                                         @endif

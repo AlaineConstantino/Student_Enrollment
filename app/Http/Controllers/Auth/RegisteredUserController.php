@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -29,6 +30,8 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        Log::info('Registration attempt for email: ' . $request->email);
+
         $request->validate([
             'full_name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255', 'unique:users,username'],
@@ -36,17 +39,23 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        Log::info('Validation passed for: ' . $request->email);
+
         $user = User::create([
             'full_name' => $request->full_name,
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'user',
+            'role' => 'parent',
         ]);
+
+        Log::info('User created: ' . $user->email . ', role: ' . $user->role);
 
         event(new Registered($user));
 
         Auth::login($user);
+
+        Log::info('Registration successful for: ' . $user->email);
 
         return redirect(route('dashboard', absolute: false));
     }

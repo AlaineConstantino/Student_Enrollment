@@ -122,9 +122,9 @@ class StudentController extends Controller
             abort(403, 'Unauthorized access');
         }
 
-        // Check if child has any approved enrollments
+        // Check if child has any enrolled enrollments
         $hasApprovedEnrollment = Enrollment::where('student_id', $student->student_id)
-            ->where('status', 'approved')
+            ->where('status', 'enrolled')
             ->exists();
 
         if ($hasApprovedEnrollment) {
