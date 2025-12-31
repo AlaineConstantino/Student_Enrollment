@@ -1,0 +1,158 @@
+LIVE DEMO WALKTHROUGH SCRIPT
+Student Enrollment System - Laravel Web Application Final Project
+
+INTRODUCTION (Before Screen Share)
+Script:
+Good day everyone. For our final project, we developed a full-stack Student Enrollment System web application using the Laravel PHP framework.
+I will now walk you through our system and demonstrate its main features, including user authentication, role-based access, CRUD operations, database integration, and security features.
+
+PART 1: LANDING PAGE
+Action:
+Open the website homepage
+Script:
+This is the landing page of our Student Enrollment System.
+From here, users can either register for a new account or log in if they already have an existing account.
+The system manages students, classes, enrollments, grades, and payments.
+
+PART 2: USER REGISTRATION
+Action:
+Click Register
+Fill form: Name: Alaine Constantino, Email: alaine@student.com, Password: password123
+Script:
+I will start by demonstrating the user registration process.
+The system requires users to provide valid information, and all inputs are validated on the server side.
+Action:
+Submit the form
+Script:
+Once the form is submitted, the password is securely hashed before being stored in the MySQL database on Railway.
+
+PART 3: LOGIN & AUTHENTICATION
+Action:
+Go to Login
+Enter: Email: alaine@student.com, Password: password123
+Click Login
+Script:
+After registration, users can log in using their credentials.
+Laravel's authentication system verifies the email and password against the database, ensuring secure access.
+(Optional Error Demo)
+Enter wrong password once
+Script:
+If incorrect credentials are entered, the system displays a user-friendly error message.
+
+PART 4: DASHBOARD OVERVIEW
+Action:
+Show dashboard after login
+Script:
+After logging in, the user is redirected to the dashboard based on their role.
+This dashboard displays the available features for admins, teachers, or students.
+
+PART 5: ROLE-BASED ACCESS CONTROL
+If Admin Account
+Action:
+Show admin menus (User, Student, Class, Enrollment, Grade, Payment Management)
+Script:
+This account is an admin account.
+Admin users have access to manage all records, view all users, and perform full CRUD operations on students, classes, enrollments, grades, and payments.
+
+If Teacher Account
+Action:
+Log in with: Email: teacher@gmail.com, Password: password
+Show teacher dashboard with classes and students
+Script:
+Teacher accounts have access to their assigned classes, students, and grades.
+
+If Student/Parent Account
+Action:
+Show user dashboard with personal info and enrollments
+Script:
+Student users can view their profile, enroll in classes, view grades, and payments.
+
+PART 6: CREATE FUNCTION (CRUD – CREATE) - Add a Student
+Action:
+Go to Student Management > Add Student
+Fill form: Student Name: John Smith, Program: Information Technology, Guardian Name: Mary Smith, Contact: 123-456-7890
+Script:
+I will now demonstrate the create function by adding a new student.
+Users can add new records by filling out the form, which is validated before submission.
+Action:
+Submit form
+Script:
+After submission, the data is saved to the database using Laravel's Eloquent ORM.
+
+PART 7: READ FUNCTION (CRUD – READ) - View Students
+Action:
+Show students table/list
+Script:
+This page displays all existing students.
+The data shown here is retrieved directly from the MySQL database.
+
+PART 8: UPDATE FUNCTION (CRUD – UPDATE) - Edit Student
+Action:
+Click Edit on a student
+Modify some data
+Save changes
+Script:
+Users can also update existing records.
+Any changes made are validated and then updated in the database.
+
+PART 9: DELETE FUNCTION (CRUD – DELETE) - Delete Student
+Action:
+Click Delete on a student
+Confirm deletion
+Script:
+The delete function allows users to remove records.
+A confirmation is required to prevent accidental deletion.
+
+PART 10: ENROLLMENT MANAGEMENT
+Action:
+Go to Enrollment Management
+Show pending enrollments
+Approve or decline
+Script:
+Admins can manage enrollment requests.
+Approving creates the enrollment record in the database.
+
+PART 11: GRADE MANAGEMENT
+Action:
+Go to Grade Management
+Assign grades to students
+Script:
+Teachers and admins can assign grades, which are stored in the database.
+
+PART 12: PAYMENT MANAGEMENT
+Action:
+Go to Payment Management
+Record a payment
+Script:
+Payments can be recorded and viewed, with dates properly formatted.
+
+PART 13: FORM VALIDATION & ERROR HANDLING
+Action:
+Submit an empty or invalid form
+Script:
+The system prevents invalid input by displaying clear validation messages.
+This ensures data integrity and improves user experience.
+
+PART 14: DATABASE INTEGRATION (EXPLAIN ONLY)
+Action:
+Briefly mention database (hosted on Railway)
+Script:
+All records in this system are stored using Laravel's Eloquent ORM and managed through migrations, ensuring structured and secure data storage in MySQL.
+
+PART 15: SECURITY FEATURES
+Action:
+Attempt to access a restricted URL (e.g., admin page as student)
+Script:
+The system uses authentication middleware and role checks to protect routes.
+Unauthorized users cannot access restricted pages.
+
+PART 16: LOGOUT
+Action:
+Click Logout
+Script:
+Finally, users can securely log out of the system, which ends their session and protects their account.
+
+CONCLUSION
+Script:
+To conclude, this Laravel web application demonstrates authentication with database-stored credentials, role-based access control, CRUD operations on students, classes, enrollments, grades, and payments, database integration, validation, and security best practices.
+Thank you, and that concludes our system demonstration.
