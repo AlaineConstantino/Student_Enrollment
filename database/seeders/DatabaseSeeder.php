@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
                 'full_name' => 'Teacher One',
                 'email' => 'teacher@gmail.com',
                 'password' => Hash::make('password'),
-                'role' => 'parent', // Will be overridden by model, but for demo
+                'role' => 'teacher',
             ]
         );
 
@@ -92,7 +92,17 @@ class DatabaseSeeder extends Seeder
                 'full_name' => 'Teacher Two',
                 'email' => 'teacher2@gmail.com',
                 'password' => Hash::make('password'),
-                'role' => 'parent',
+                'role' => 'teacher',
+            ]
+        );
+
+        $teacherUser3 = User::firstOrCreate(
+            ['email' => 'teacher@brightminds.edu'],
+            [
+                'username' => 'teacher',
+                'full_name' => 'Teacher One',
+                'password' => Hash::make('password123'),
+                'role' => 'teacher',
             ]
         );
 
