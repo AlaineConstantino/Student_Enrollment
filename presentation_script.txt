@@ -56,7 +56,7 @@ Admin users have access to manage all records, view all users, and perform full 
 
 If Teacher Account
 Action:
-Log in with: Email: teacher@gmail.com, Password: password
+Log in with: Email: teacher@brightminds.edu, Password: password123
 Show teacher dashboard with classes and students
 Script:
 Teacher accounts have access to their assigned classes, students, and grades.
