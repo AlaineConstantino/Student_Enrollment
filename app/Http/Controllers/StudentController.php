@@ -12,29 +12,47 @@ class StudentController extends Controller
 {
     public function index(Request $request)
     {
-        $search = $request->input('search');
-        $showArchived = $request->input('archived');
+        $user = auth()->user();
 
-        $query = Student::with('guardian');
+        if ($user->role === 'admin') {
+            $search = $request->input('search');
+            $showArchived = $request->input('archived');
 
-        if ($search) {
-            $query->where('full_name', 'like', "%{$search}%");
-        }
+            $query = Student::with('guardian');
 
-        if ($showArchived) {
-            $query->onlyTrashed();
+            if ($search) {
+                $query->where('full_name', 'like', "%{$search}%");
+            }
+
+            if ($showArchived) {
+                $query->onlyTrashed();
+            } else {
+                $query->whereNull('deleted_at');
+            }
+
+            $students = $query->paginate(15);
+
+            $archived = Student::with('guardian')->onlyTrashed()->paginate(15);
+
+            return view('admin.student-management', [
+                'students' => $students,
+                'archived' => $archived,
+            ]);
+        } elseif ($user->role === 'parent') {
+            // For parents, show only their children
+            $students = Student::whereHas('guardian', function ($query) use ($user) {
+                $query->where('email', $user->email);
+            })->get();
+
+            return view('dashboards.user-dashboard', [
+                'students' => $students,
+                'pendingEnrollments' => 0, // Not needed for this view
+                'approvedEnrollments' => 0,
+                'classes' => [],
+            ]);
         } else {
-            $query->whereNull('deleted_at');
+            abort(403, 'Unauthorized access');
         }
-
-        $students = $query->paginate(15);
-
-        $archived = Student::with('guardian')->onlyTrashed()->paginate(15);
-
-        return view('admin.student-management', [
-            'students' => $students,
-            'archived' => $archived,
-        ]);
     }
 
     public function create()

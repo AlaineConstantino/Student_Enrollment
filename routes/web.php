@@ -29,8 +29,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('students/{id}/restore-parent', [StudentController::class, 'restoreParent'])->name('students.restore-parent');
 });
 
-Route::middleware(['auth','role:admin'])->group(function () {
-    Route::resource('students', StudentController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('students', StudentController::class)->middleware('role:admin');
+    Route::get('students', [StudentController::class, 'index'])->name('students.index')->withoutMiddleware('role:admin');
     Route::resource('enrollments', EnrollmentController::class)->except(['show']);
     Route::patch('enrollments/{id}/status', [EnrollmentController::class, 'updateStatus']);
     Route::resource('classes', ClassController::class);
