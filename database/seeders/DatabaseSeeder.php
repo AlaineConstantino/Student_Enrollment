@@ -96,7 +96,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        $teacherUser3 = User::firstOrCreate(
+        $teacherUser3 = User::updateOrCreate(
             ['email' => 'teacher@brightminds.edu'],
             [
                 'username' => 'teacher',
